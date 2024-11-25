@@ -3,10 +3,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car("nisan", "skyline", 2000, 2);
-        Motorcycle moto1 = new Motorcycle("nisan", "skyline", 2000, true);
-        car1.getDescription();
+        Garage garage = new Garage();
+        Car car = new Car();
+        Bicycle bicycle = new Bicycle();
+        Boat boat = new Boat();
+
+        System.out.println("Автомобиль: ");
+        garage.operateVehicle(car);
         System.out.println();
-        moto1.getDescription();
+
+        System.out.println("Лодка: ");
+        garage.operateVehicle(boat);
+        System.out.println();
+
+        System.out.println("Велосипед: ");
+        garage.operateVehicle(bicycle);
+        System.out.println();
     }
 }
