@@ -1,33 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Main {
-
-    static void callPersonToDuty(Person person) {
-        person.performDuty();
-    }
-
     public static void main(String[] args) {
-        List<Person> people = new ArrayList<>();
-        people.add(new Student("Иван", 16, 10));
-        people.add(new Teacher("Мария Ивановна", 35, "Математика"));
-        people.add(new Principal("Александр Петрович", 50, 25));
+        Library library = new Library();
 
-        // Вызываем метод callPersonToDuty для каждого человека
-        for (Person person : people) {
-            callPersonToDuty(person);
+        library.addBook(new Book(1, "Мастер и маргарита", "Михаил Булгаков"));
+        library.addBook(new Book(2, "Убийство в восточном экспрессе", "Агата Кристи"));
+        library.addBook(new Book(3, "Война и мир", "Лев Толстой"));
+        library.addBook(new Book(4, "Судьба человека", "Михаил Шолохов"));
 
-            // Вызов уникальных методов
-            if (person instanceof Student) {
-                ((Student) person).study();
-            } else if (person instanceof Teacher) {
-                ((Teacher) person).teach();
-            } else if (person instanceof Principal) {
-                ((Principal) person).manage();
-            }
+        library.removeBookById(3);
 
-            System.out.println();
+        Book book = library.findBookByTitle("Судьба человека");
+        if (book != null) {
+            System.out.println("Найдена книга: " + book);
         }
-    }
 
+        System.out.println("Все книги в библиотеке:");
+        library.listAllBooks();
+
+        System.out.println("Книги автора Лев Толстой:");
+        library.listBooksByAuthor("Лев Толстой");
+    }
 }
+
+
